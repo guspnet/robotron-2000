@@ -1,8 +1,18 @@
 const subtrair = document.querySelector("#subtrair");
 const somar = document.querySelector("#somar");
-
+const imagemRobo = document.querySelector("[data-cor]");
 const controle = document.querySelectorAll("[data-controle]");
 const estatisticas = document.querySelectorAll("[data-estatistica]");
+
+const caminhoImagens = [
+    "img/Robotron 2000 - Amarelo/Robotron 2000 - Amarelo.png",
+    "img/Robotron 2000 - Azul/Robotron 2000 - Azul.png",
+    "img/Robotron 2000 - Branco/Robotron 2000 - Branco.png",
+    "img/Robotron 2000 - Preto/Robotron 2000 - Preto.png",
+    "img/Robotron 2000 - Rosa/Robotron 2000 - Rosa.png",
+    "img/Robotron 2000 - Vermelho/Robotron 2000 - Vermelho.png"
+]
+
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -55,9 +65,37 @@ function manipulaDados(operacao, controle) {
 }
 
 function atualizaEstatisticas(peca) {
-    console.log()
 
     estatisticas.forEach( (elemento) => {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
+}
+
+imagemRobo.onclick = () => {
+    switch (imagemRobo.dataset.cor) {
+        case "amarelo":
+            imagemRobo.src = caminhoImagens[1];
+            imagemRobo.dataset.cor = "azul";
+            break;
+        case "azul":
+            imagemRobo.src = caminhoImagens[2];
+            imagemRobo.dataset.cor = "branco";
+            break;
+        case "branco":
+            imagemRobo.src = caminhoImagens[3];
+            imagemRobo.dataset.cor = "preto";
+            break;
+        case "preto":
+            imagemRobo.src = caminhoImagens[4];
+            imagemRobo.dataset.cor = "rosa";
+            break;
+        case "rosa":
+            imagemRobo.src = caminhoImagens[5];
+            imagemRobo.dataset.cor = "vermelho";
+            break;
+        case "vermelho":
+            imagemRobo.src = caminhoImagens[0];
+            imagemRobo.dataset.cor = "amarelo";
+            break;
+    }
 }
